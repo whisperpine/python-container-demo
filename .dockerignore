@@ -1,0 +1,9 @@
+.venv
+.direnv
+__pycache__
+
+.envrc
+.python-version
+compose.yaml
+flake.lock
+flake.nix

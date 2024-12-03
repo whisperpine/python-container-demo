@@ -1,0 +1,17 @@
+# Use this file only in dev stage.
+
+services:
+  app:
+    init: true
+    ports:
+      - 5000:5000
+    build:
+      context: .
+      target: final
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+          ignore:
+            - .venv/
