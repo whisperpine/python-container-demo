@@ -24,7 +24,7 @@
             packages =
               with pkgs;
               [ python312 ]
-              ++ (with pkgs.python311Packages; [
+              ++ (with pkgs.python312Packages; [
                 venvShellHook
                 uv
               ]);
