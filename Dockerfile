@@ -39,7 +39,7 @@ COPY --link --from=builder /app /app
 # Place executables in the environment at the front of the path.
 ENV PATH="/app/.venv/bin:$PATH"
 
-# Create group and user.
+# Create non-root group and user.
 RUN addgroup -S app && adduser -S app -G app
 # Set ownership and permissions.
 RUN chown -R app:app /app

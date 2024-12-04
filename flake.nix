@@ -26,6 +26,7 @@
               [ python312 ]
               ++ (with pkgs.python312Packages; [
                 venvShellHook
+                docker-compose
                 uv
               ]);
           };
