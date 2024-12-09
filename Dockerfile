@@ -33,18 +33,16 @@ FROM python:3.12-alpine AS final
 # Install the project into `/app`.
 WORKDIR /app
 
+# Create non-root group and user.
+RUN addgroup -S app && adduser -S app -G app
+# Switch to the user just created.
+USER app
+
 # Copy the application from the builder.
-COPY --link --from=builder /app /app
+COPY --link --chown=app:app --from=builder /app /app
 
 # Place executables in the environment at the front of the path.
 ENV PATH="/app/.venv/bin:$PATH"
-
-# Create non-root group and user.
-RUN addgroup -S app && adduser -S app -G app
-# Set ownership and permissions.
-RUN chown -R app:app /app
-# Switch to the user just created.
-USER app
 
 # Expose the port inside container.
 EXPOSE 5000
