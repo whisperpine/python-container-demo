@@ -33,9 +33,18 @@ FROM python:3.12-alpine AS final
 # Install the project into `/app`.
 WORKDIR /app
 
-# Create non-root group and user.
-RUN addgroup -S app && adduser -S app -G app
-# Switch to the user just created.
+# Create a non-privileged user that the app will run under.
+# See https://docs.docker.com/go/dockerfile-user-best-practices/
+ARG UID=10001
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/nonexistent" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    app
+# Switch to the use just created.
 USER app
 
 # Copy the application from the builder.
