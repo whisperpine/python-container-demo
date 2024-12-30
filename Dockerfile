@@ -48,7 +48,7 @@ RUN adduser \
 USER app
 
 # Copy the application from the builder.
-COPY --link --chown=app:app --from=builder /app /app
+COPY --chown=app:app --from=builder /app /app
 
 # Place executables in the environment at the front of the path.
 ENV PATH="/app/.venv/bin:$PATH"
