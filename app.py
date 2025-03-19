@@ -1,10 +1,12 @@
+import logging
 from flask import Flask
 
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
+def hello() -> str:
     return "Hello, World!"
 
 
