@@ -10,7 +10,11 @@ def hello() -> str:
     return "Hello, World!"
 
 
-if __name__ == "__main__":
+def main() -> None:
     from waitress import serve
 
     serve(app, host="0.0.0.0", port=5000)
+
+
+if __name__ == "__main__":
+    main()

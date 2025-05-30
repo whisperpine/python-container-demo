@@ -4,13 +4,13 @@
 set -e
 
 # Set the name and tag for later usage.
-CONTAINER_NAME_TAG="python-container-demo:latest"
+container_name_tag="python-container-demo:latest"
 
 # Build the container image.
 echo ":: building container image..."
-docker build -t $CONTAINER_NAME_TAG .
+docker build -t $container_name_tag .
 
 echo
 # List container images with given name.
-docker images $CONTAINER_NAME_TAG
+docker images $container_name_tag
 echo

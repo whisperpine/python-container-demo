@@ -20,15 +20,14 @@
         { pkgs }:
         {
           default = pkgs.mkShell {
-            venvDir = ".venv";
-            packages =
-              with pkgs;
-              [ python312 ]
-              ++ (with pkgs.python312Packages; [
-                venvShellHook
-                docker-compose
-                uv
-              ]);
+            packages = with pkgs; [
+              docker-compose
+              python313
+              uv
+            ];
+            shellHook = ''
+              uv sync
+            '';
           };
         }
       );

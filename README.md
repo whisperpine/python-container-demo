@@ -36,7 +36,7 @@ python --version && which python
 ```
 
 Without the help of [nix-direnv](https://github.com/nix-community/nix-direnv),
-the `nix develop` needs to be run mannually every time:
+the `nix develop` needs to be run manually every time:
 
 ```sh
 # `nix develop` needs to be run every time you `cd` in.
@@ -53,14 +53,14 @@ It's a drop-in replacement of `pip`, `pyenv`, `virtualenv` and more.
 In this repo, `uv` is used both in the building stage and dev stage:
 
 - During the building stage, `uv`'s official container image is used to
-install all the dependenices.
+install all the dependencies.
 - During the dev stage, `uv` command will be available when
 [nix dev environment](#nix-dev-environment) is loaded.
 
 ```sh
-# install dependenices specified in uv.lock
+# install dependencies specified in uv.lock
 uv sync               
-# add or remove dependenices
+# add or remove dependencies
 uv add PACKAGE_NAME
 uv remove PACKAGE_NAME
 ```
@@ -72,27 +72,14 @@ the package management mechanism of nix conflicts with `uv`'s.
 Hence, use `flake.nix` to manage python version.
 
 ```nix
-# modify "python312" and "python312Packages" to change python version.
-packages = with pkgs; [ python312 ]
-  ++ (with pkgs.python312Packages; [
-    # ...
-  ]);
+# modify "python312" to change python version.
+packages = with pkgs; [ python312 ];
 ```
 
-To make `uv` notice the altered python version, change
-[.python-version](./.python-version) and [pyproject.toml](./pyproject.toml) as well.\
+To make `uv` notice the altered python version,
+change [pyproject.toml](./pyproject.toml) as well.
 Don't forget to change the base image tags in [Dockerfile](./Dockerfile) accordingly
-(both of the tags need to change).
-
-If python version is changed in `flake.nix`,
-commands need to run to take effect in dev env:\
-(Albeit this seems inelegant, I haven't found any other promising solutions...)
-
-```sh
-rm .venv -r
-direnv reload
-uv sync
-```
+(both of the base image tags need to be changed).
 
 ## Build Container Image
 
