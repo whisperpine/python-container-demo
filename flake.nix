@@ -1,10 +1,8 @@
 {
   description = "A Nix-flake-based Python development environment";
-
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
   outputs =
-    { self, nixpkgs }:
+    inputs:
     let
       supportedSystems = [
         "x86_64-linux"
@@ -13,7 +11,10 @@
         "aarch64-darwin"
       ];
       forEachSupportedSystem =
-        f: nixpkgs.lib.genAttrs supportedSystems (system: f { pkgs = import nixpkgs { inherit system; }; });
+        f:
+        inputs.nixpkgs.lib.genAttrs supportedSystems (
+          system: f { pkgs = import inputs.nixpkgs { inherit system; }; }
+        );
     in
     {
       devShells = forEachSupportedSystem (
@@ -27,6 +28,7 @@
             ];
             shellHook = ''
               uv sync
+              source .venv/bin/activate
             '';
           };
         }
