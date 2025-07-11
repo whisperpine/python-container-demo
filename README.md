@@ -1,6 +1,7 @@
-# README
+# Python Container Demo
 
-A demo project to show how to do container tasks for a python project.
+A demo project to show how to build container images for a python project with
+best practices.
 
 ## Reference
 
@@ -72,8 +73,8 @@ the package management mechanism of nix conflicts with `uv`'s.
 Hence, use `flake.nix` to manage python version.
 
 ```nix
-# modify "python312" to change python version.
-packages = with pkgs; [ python312 ];
+# modify "python313" to change python version.
+packages = with pkgs; [ python313 ];
 ```
 
 To make `uv` notice the altered python version,
