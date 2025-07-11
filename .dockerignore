@@ -2,8 +2,8 @@
 .direnv
 __pycache__
 
-.envrc
-.python-version
+.github
 compose.yaml
 flake.lock
 flake.nix
+.envrc

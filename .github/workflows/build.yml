@@ -14,8 +14,8 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      # - name: Set up QEMU for multi-platform builds
-      #   uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU for multi-platform builds
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Log in to GHCR
@@ -35,5 +35,4 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.sha_short }}
-          platforms: linux/amd64
-          # platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64
