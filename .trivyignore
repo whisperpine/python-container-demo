@@ -1,0 +1,8 @@
+# ------------------------------------------------
+# trivy config
+# ------------------------------------------------
+
+# LOW: Add HEALTHCHECK instruction in your Dockerfile
+# You should add HEALTHCHECK instruction in your docker container images to perform the health check on running containers.
+# See https://avd.aquasec.com/misconfig/ds026
+DS026
