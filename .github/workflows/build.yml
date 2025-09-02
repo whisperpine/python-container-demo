@@ -48,7 +48,7 @@ jobs:
         id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.32.0
+        uses: aquasecurity/trivy-action@0.33.0
         with:
           image-ref: ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.sha_short }}
           severity: CRITICAL,HIGH,MEDIUM
