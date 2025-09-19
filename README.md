@@ -77,10 +77,22 @@ Hence, use `flake.nix` to manage python version.
 packages = with pkgs; [ python313 ];
 ```
 
-To make `uv` notice the altered python version,
-change [pyproject.toml](./pyproject.toml) as well.
-Don't forget to change the base image tags in [Dockerfile](./Dockerfile) accordingly
-(both of the base image tags need to be changed).
+(Optional) If the required python version changes, modify [pyproject.toml](./pyproject.toml):
+
+```toml
+[project]
+requires-python = ">=3.13" # reconfigure this field
+```
+
+To make `uv` notice the altered python version and use it in .venv,
+run the following command:
+
+```sh
+uv venv --clear
+```
+
+Don't forget to change both of the base image tags in [Dockerfile](./Dockerfile)
+accordingly.
 
 ## Build Container Image
 
