@@ -21,13 +21,21 @@
         { pkgs }:
         {
           default = pkgs.mkShell {
+            # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               docker-compose
               python313
               uv
             ];
+            # The shell script executed when the environment is activated.
             shellHook = ''
+              # Print the last modified date of "flake.lock".
+              stat flake.lock | grep "Modify" |
+                awk '{printf "\"flake.lock\" last modified on: %s", $2}' &&
+                echo " ($((($(date +%s) - $(stat -c %Y flake.lock)) / 86400)) days ago)"
+              # Install python project dependencies.
               uv sync
+              # Active python virtual environment.
               source .venv/bin/activate
             '';
           };
