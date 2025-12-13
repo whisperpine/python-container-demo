@@ -16,9 +16,9 @@ best practices.
 ## Prerequisites
 
 - Linux or macOS with [nixpkgs](https://github.com/NixOS/nixpkgs) installed,
-and with `flakes` and `nix-command` features enabled.
+  and with `flakes` and `nix-command` features enabled.
 - A tool that can build container images.
-In this demo, [docker](https://www.docker.com/) is preferred.
+  In this demo, [docker](https://www.docker.com/) is preferred.
 
 ## Nix Dev Environment
 
@@ -54,9 +54,9 @@ It's a drop-in replacement of `pip`, `pyenv`, `virtualenv` and more.
 In this repo, `uv` is used both in the building stage and dev stage:
 
 - During the building stage, `uv`'s official container image is used to
-install all the dependencies.
+  install all the dependencies.
 - During the dev stage, `uv` command will be available when
-[nix dev environment](#nix-dev-environment) is loaded.
+  [nix dev environment](#nix-dev-environment) is loaded.
 
 ```sh
 # install dependencies specified in uv.lock
@@ -100,7 +100,7 @@ Suppose `docker` is used to build container image.
 
 ```sh
 # build image and print the result
-sh ./build.sh
+sh ./scripts/build.sh
 ```
 
 ## Docker Compose
