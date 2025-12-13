@@ -1,8 +1,9 @@
 # Use this file only in dev stage.
 
 services:
-  app:
+  python-container-demo:
     init: true
+    image: python-container-demo
     ports:
       - 5000:5000
     build:
