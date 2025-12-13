@@ -1,9 +1,20 @@
+.dockerignore
+
 .venv
 .direnv
 __pycache__
 
+.git
+.gitignore
+.gitattributes
 .github
+.trivyignore
+Dockerfile
+LICENSE
+README.md
 compose.yaml
 flake.lock
 flake.nix
 .envrc
+
+/scripts
