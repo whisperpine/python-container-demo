@@ -56,4 +56,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 EXPOSE 5000
 
 # Set the default command to run.
-CMD [ "python", "app.py" ]
+CMD [ "python", "main.py" ]
