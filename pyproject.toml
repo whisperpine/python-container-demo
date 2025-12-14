@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Show how to build container images for a python project managed by uv"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["flask>=3.1.0", "waitress>=3.0.2"]
+dependencies = ["fastapi>=0.124.4", "uvicorn[standard]>=0.38.0"]
+
+[dependency-groups]
+dev = []
+
+[build-system]
+requires = ["uv_build>=0.9.17,<0.10.0"]
+build-backend = "uv_build"
