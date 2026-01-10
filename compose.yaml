@@ -3,7 +3,7 @@
 services:
   python-container-demo:
     init: true
-    image: python-container-demo
+    image: whipsperpine/python-container-demo
     ports:
       - 5000:5000
     build:
