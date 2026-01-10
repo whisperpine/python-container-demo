@@ -28,6 +28,18 @@ jobs:
           ruff format --check
           ruff check
 
+  ty:
+    runs-on: ubuntu-latest
+    name: use ty to check types
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Run typos command
+        shell: nix shell nixpkgs#uv nixpkgs#ty --quiet --command bash {0}
+        run: |
+          uv sync
+          ty check
+
   trivy-fs:
     name: use trivy to scan files
     runs-on: ubuntu-latest
