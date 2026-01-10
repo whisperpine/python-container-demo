@@ -1,4 +1,5 @@
 import logging
+
 from fastapi import FastAPI, HTTPException
 
 # All standard HTTP methods.
@@ -22,7 +23,7 @@ async def echo(phrase: str) -> str:
 
 
 @app.api_route("/{full_path:path}", methods=ALL_METHODS)
-async def fallback_handler(full_path: str):
+async def fallback_handler(full_path: str) -> None:
     """
     Catch-all fallback for unmatched routes.
 
