@@ -7,10 +7,10 @@ WORKDIR /app
 
 # Enable bytecode compilation.
 # It improves startup time (at the cost of increased installation time).
-ENV UV_COMPILE_BYTECODE=1
+ENV UV_COMPILE_BYTECODE="1"
 
 # Copy from the cache instead of linking since it's a mounted volume.
-ENV UV_LINK_MODE=copy
+ENV UV_LINK_MODE="copy"
 
 # Install the project's dependencies using the lockfile and settings.
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -34,7 +34,7 @@ WORKDIR /app
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
-ARG UID=10001
+ARG UID="10001"
 RUN adduser \
     --disabled-password \
     --gecos "" \
