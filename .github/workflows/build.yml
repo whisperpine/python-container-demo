@@ -47,19 +47,19 @@ jobs:
       - name: Set outputs
         id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - uses: cachix/install-nix-action@v31
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.33.1
-        with:
-          image-ref: ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.sha_short }}
-          severity: CRITICAL,HIGH,MEDIUM
-          output: trivy-results.sarif
-          format: sarif
-          hide-progress: true
-          ignore-unfixed: true
-          exit-code: 0
+        shell: nix shell nixpkgs#trivy --quiet --command bash {0}
+        run: |
+          trivy --quiet image ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.sha_short }} \
+            --output trivy-image-results.sarif \
+            --severity CRITICAL,HIGH,MEDIUM \
+            --format sarif \
+            --exit-code 1
       - name: Upload Trivy scan results to GitHub Security tab
         if: ${{ success() || failure() }}
         uses: github/codeql-action/upload-sarif@v4
         with:
-          sarif_file: trivy-results.sarif
+          sarif_file: trivy-image-results.sarif
           category: trivy-image-scan
