@@ -35,6 +35,8 @@ jobs:
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.sha_short }}
           platforms: linux/amd64,linux/arm64
+          cache-to: type=gha,mode=max
+          cache-from: type=gha
 
   scan-cve:
     name: scan CVE on the image
