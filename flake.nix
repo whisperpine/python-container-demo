@@ -23,9 +23,8 @@
           default = pkgs.mkShellNoCC {
             # The Nix packages installed in the dev environment.
             packages = with pkgs; [
-              docker-compose
               python313
-              uv
+              uv # python package and project manager
             ];
             # The shell script executed when the environment is activated.
             shellHook = /* sh */ ''

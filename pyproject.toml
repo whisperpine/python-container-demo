@@ -4,13 +4,13 @@ version = "0.1.0"
 description = "Show how to build container images for a python project managed by uv"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["fastapi>=0.124.4", "uvicorn[standard]>=0.38.0"]
+dependencies = ["fastapi>=0.136.1", "uvicorn[standard]>=0.46.0"]
 
 [dependency-groups]
-dev = ["httpx>=0.28.1", "pytest>=9.0.2", "pytest-asyncio>=1.3.0"]
+dev = ["httpx>=0.28.1", "pytest>=9.0.3", "pytest-asyncio>=1.3.0"]
 
 [build-system]
-requires = ["uv_build>=0.11.3,<0.12.0"]
+requires = ["uv_build>=0.11.8,<0.12.0"]
 build-backend = "uv_build"
 
 [tool.ruff.format]
@@ -68,7 +68,7 @@ select = [
   "FAST", # FastAPI
 ]
 ignore = [
-  "COM812", # trailing comma missing 
+  "COM812", # trailing comma missing
   "S104",   # possible binding to all interfaces
   "S101",   # use of assert detected (useful for tests)
   "E501",   # line-too-long (configure line-length instead)
