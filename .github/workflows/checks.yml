@@ -40,6 +40,18 @@ jobs:
           uv sync
           ty check
 
+  pytest:
+    runs-on: ubuntu-latest
+    name: run test cases
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Run pytest command
+        shell: nix shell nixpkgs#uv --quiet --command bash {0}
+        run: |
+          uv sync
+          uv run pytest
+
   trivy-scan:
     name: use trivy to scan files
     runs-on: ubuntu-latest
