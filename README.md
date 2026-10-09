@@ -60,7 +60,7 @@ In this repo, `uv` is used both in the building stage and dev stage:
 
 ```sh
 # install dependencies specified in uv.lock
-uv sync               
+uv sync
 # add or remove dependencies
 uv add PACKAGE_NAME
 uv remove PACKAGE_NAME
@@ -73,15 +73,15 @@ the package management mechanism of nix conflicts with `uv`'s.
 Hence, use `flake.nix` to manage python version.
 
 ```nix
-# modify "python313" to change python version.
-packages = with pkgs; [ python313 ];
+# modify "python314" to change python version.
+packages = with pkgs; [ python314 ];
 ```
 
 (Optional) If the required python version changes, modify [pyproject.toml](./pyproject.toml):
 
 ```toml
 [project]
-requires-python = ">=3.13" # reconfigure this field
+requires-python = ">=3.14" # reconfigure this field
 ```
 
 To make `uv` notice the altered python version and use it in .venv,
