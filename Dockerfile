@@ -1,6 +1,6 @@
 ################################################################################
 # Use a Python image with uv pre-installed.
-FROM ghcr.io/astral-sh/uv:python3.13-alpine AS builder
+FROM ghcr.io/astral-sh/uv:python3.14-alpine AS builder
 
 # Install the project into `/app`.
 WORKDIR /app
@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ################################################################################
 # Then, use a final image without uv.
 # It is important to use the image that matches the builder.
-FROM python:3.13-alpine AS final
+FROM python:3.14-alpine AS final
 
 # Install the project into `/app`.
 WORKDIR /app
