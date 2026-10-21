@@ -15,10 +15,6 @@
     "**/bower_components/**",
     "**/.venv/**"
   ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["* * 2 */3 *"]
-  },
   "packageRules": [
     {
       "matchManagers": ["pep621"],
